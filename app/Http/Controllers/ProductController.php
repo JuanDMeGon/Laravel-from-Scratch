@@ -6,7 +6,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        return 'This is the list of products FROM CONTROLLER';
+        return view('products.index');
     }
 
     public function create()
@@ -21,7 +21,7 @@ class ProductController extends Controller
 
     public function show($product)
     {
-        return "Showing product {$product} FROM CONTROLLER";
+        return view('products.show');
     }
 
     public function edit($product)
