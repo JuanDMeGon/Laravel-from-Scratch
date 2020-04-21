@@ -22,7 +22,17 @@ class ProductController extends Controller
 
     public function store()
     {
-        dd('In Store');
+        // $product = Product::create([
+        //     'title' => request()->title,
+        //     'description' => request()->description,
+        //     'price' => request()->price,
+        //     'stock' => request()->stock,
+        //     'status' => request()->status,
+        // ]);
+
+        $product = Product::create(request()->all());
+
+        return $product;
     }
 
     public function show($product)
