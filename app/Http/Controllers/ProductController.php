@@ -32,13 +32,15 @@ class ProductController extends Controller
 
         request()->validate($rules);
 
-        $product = Product::create(request()->all());
-
         if (request()->stock == 0 && request()->status == 'available') {
             session()->flash('error', 'If available must have stock');
 
-            return redirect()->back();
+            return redirect()
+                ->back()
+                ->withInput(request()->all());
         }
+
+        $product = Product::create(request()->all());
 
         return redirect()->route('products.index');
     }
