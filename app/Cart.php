@@ -11,6 +11,6 @@ class Cart extends Model
     use HasFactory;
     public function products()
     {
-        return $this->belongsToMany(Product::class)->withPivot('quantity');
+        return $this->morphToMany(Product::class, 'productable')->withPivot('quantity');
     }
 }
