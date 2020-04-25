@@ -3,6 +3,8 @@
 @section('content')
     <h1>Order Details</h1>
 
+    <h4 class="text-center"><strong>Grand Total: </strong>${{ $cart->total }}</h4>
+
     <div class="table-responsive">
         <table class="table table-striped">
             <thead class="thead-light">
@@ -20,7 +22,7 @@
                         </td>
                         <td>{{ $product->price }}</td>
                         <td>{{ $product->pivot->quantity }}</td>
-                        <td>{{ $product->pivot->quantity * $product->price }}</td>
+                        <td>${{ $product->total }}</td>
                     </tr>
                 @endforeach
             </tbody>
