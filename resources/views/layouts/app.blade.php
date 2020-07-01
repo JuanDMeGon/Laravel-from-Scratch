@@ -33,9 +33,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('products.index') }}">Products</a>
-                        </li>
+                        @if (optional(auth()->user())->isAdmin())
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('panel') }}">
+                                    Panel
+                                </a>
+                            </li>
+                        @endif
                         @inject('cartService', 'App\Services\CartService')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('carts.index') }}">
