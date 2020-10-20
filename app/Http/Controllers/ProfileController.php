@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -31,6 +32,18 @@ class ProfileController extends Controller
         }
 
         $user->save();
+
+        if ($request->hasFile('image')) {
+            if ($user->image != null) {
+                Storage::disk('images')->delete($user->image->path);
+                $user->image->delete();
+            }
+
+            $user->image()->create([
+                'path' => $request->image->store('users', 'images'),
+            ]);
+        }
+
 
         return redirect()
             ->route('profile.edit')
