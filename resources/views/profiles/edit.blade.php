@@ -71,7 +71,7 @@
 
                             <div class="col-md-6">
                                 <div class="custom-file">
-                                    <input type="file" name="image" accept="images/*" class="custom-file-input">
+                                    <input type="file" name="image" accept="image/*" class="custom-file-input">
                                     <label class="custom-file-label">
                                         Profile Image...
                                     </label>
