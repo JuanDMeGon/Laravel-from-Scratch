@@ -24,7 +24,7 @@ class ProfileController extends Controller
     {
         $user = $request->user();
 
-        $user->fill($request->validated());
+        $user->fill(array_filter($request->validated()));
 
         if ($user->isDirty('email')) {
             $user->email_verified_at = null;
